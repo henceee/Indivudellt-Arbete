@@ -37,6 +37,21 @@
 <script type="text/javascript">
     $(function(){
         
+       s_time_input = $('#reservation_start_time');
+       e_time_input = $('#reservation_end_time');
+       
+       clearinput = function(inputs){
+       
+           $.each(inputs, function(i,input){
+                 $(input)
+                 .find('option')
+                .remove()
+                .end();  
+           })
+       }
+        
+        clearinput([s_time_input, e_time_input]);
+        
         function available(date){
             dmy = date.getDate()+"-"+ (date.getMonth()+1)+"-"+date.getFullYear();
             return[$.inArray(dmy, availableDates) != -1];
@@ -62,47 +77,41 @@
             maxDate: '3m',
             beforeShowDay:available
         });
-        
-        
-       s_time_input = $('#reservation_start_time');
-       e_time_input = $('#reservation_end_time');
-       
-       $(e_time_input)
-         .find('option')
-        .remove()
-        .end();
-        
-         $(s_time_input)
-         .find('option')
-        .remove()
-        .end();
-       
-       
+          
         $('#reservation_date').change(function(e){
             
+            clearinput([s_time_input, e_time_input]);
+            
             $.ajax({
-            url:'/times',
+            url:'/stimes',
             data: {'adventure_id': <%= @adventure.id%>, 'date':$(e.target).val()},
             dataType: 'json',
             success: function(data){
+                
                  $.each(data,function(arrID, arrValue){
-                 
-                 s_time =moment.parseZone(arrValue.start_time).utc().format('HH:mm')
-                 e_time =moment.parseZone(arrValue.end_time).utc().format('HH:mm')
-                  
-                  $(s_time_input).append($('<option>', {value: s_time , text: s_time}));
-                  
-                  $(e_time_input).append($('<option>', {value: e_time , text: e_time}));
-
+                      s_time =moment.parseZone(arrValue.start_time).utc().format('HH:mm')
+                      $(s_time_input).append($('<option>', {value: s_time , text: s_time, id: arrValue.id}));
+                      $('#reservation_start_time').focus();
                 });
             }
             });
-        
-        
-            
-       
         });
         
+        $('#reservation_start_time').on('focus',function(){
+            
+           clearinput([e_time_input]);
+           id= $('#reservation_start_time').find(":selected")[0].id
+           $.ajax({
+            url:'/etimes',
+            data: {'slot_id':id},
+            dataType: 'json',
+            success: function(data){
+                  e_time =moment.parseZone(data).utc().format('HH:mm')
+                  $(e_time_input).append($('<option>', {value: e_time, text: e_time}));
+            }
+            });
+            
+        });
         
     });
 </script>

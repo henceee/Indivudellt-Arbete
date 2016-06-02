@@ -22,9 +22,12 @@ Rails.application.routes.draw do
   end
   
   get '/preload' => 'reservations#preload'
-  get '/times' => 'reservations#times'
+  get '/stimes' => 'reservations#stimes'
+  get '/etimes' => 'reservations#etimes'
   
   get '/your_adventures' => 'reservations#your_adventures'
   get '/your_reservations' => 'reservations#your_reservations'
+  post '/notify' => 'reservations#notify'
+  post '/your_adventures' => 'reservations#your_adventures'
   
  end
