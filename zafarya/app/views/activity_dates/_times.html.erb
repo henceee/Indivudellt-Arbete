@@ -1,0 +1,14 @@
+<div class="times panel panel-default">
+    <a href="#" onclick="removeChoice($(this))" class="btn btn-default removeButton right" > <i class="fa fa-times fa-lg"></i> </a> 
+    <div class="row text-center">
+       <div class="form-group">
+           <label>Start Time:</label> 
+            <%= a.time_field :start_time %>           
+        </div>
+     </div>
+     <div class="row text-center">
+        <label>End Time: </label> 
+        <%= a.time_field :end_time %>
+    </div>
+    <%= a.hidden_field :activity_date_id, value: @date.id %>
+</div>

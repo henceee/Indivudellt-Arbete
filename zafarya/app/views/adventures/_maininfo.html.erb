@@ -1,0 +1,50 @@
+<div class="row text-center">
+	<h1><%= @adventure.activity_name %></h1>
+</div>
+
+<div class="row top-marg">
+    <div class="col-md-3 text-center">
+        <%= image_tag avatar_url(@adventure.user), class: "img-circle avatar-large" %><br><br>
+		Added By: <%= @adventure.user.fullname %>    
+    </div>
+    
+    <div class="col-md-9 text-center">
+		
+		<!-- ICONS  --->
+		<div class="row text-center row-space-1">
+		    <div class="col-sm-3">
+		        <i class="fa  fa-user fa-2x"></i>
+		    </div>
+		    <div class="col-sm-3">
+		        <i class="fa fa-briefcase fa-2x"></i>
+		    </div>
+		    <div class="col-sm-3">
+		        <i class="fa fa-map-marker fa-2x"></i>
+		    </div>
+		     <div class="col-sm-3">
+		        <i class="fa fa-group fa-2x"></i>
+		    </div>
+		    
+		</div>  
+		<!--TEXT UNDER THE ICONS -->
+		<div class="row text-center">
+		    <div class="col-sm-3">
+		    <h4>Leader:</h4>
+			<%= @adventure.leader %>    
+			</div>
+			<div class="col-sm-3">
+				 <h4>Company Name:</h4>
+				<%= @adventure.company_name %>  
+			</div>
+			<div class="col-sm-3">
+				<h4>Adress:</h4>
+			<%= @adventure.adress %>    
+			</div>
+			<div class="col-sm-3">
+				<h4>Max Perticipants:</h4>
+			<%= @adventure.max_perticipants %>    
+			</div>		
+		</div>
+    </div>
+</div>
+	            

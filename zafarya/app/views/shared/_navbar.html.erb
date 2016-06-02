@@ -24,19 +24,22 @@
                   <%= current_user.fullname %> 
                   <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Your activities</a></li>
+                  <li><%= link_to "Your Listings", adventures_path %></li>
+                  <li><%= link_to "Your Reservations", your_reservations_path %></li>
+                  <li><%= link_to "Your Adventures", your_adventures_path %></li>
+                  
                   <li><a href="#">Wishlist</a></li>
-                 <li><a href="#"><%= link_to "Edit Profile",edit_user_registration_path %></a></li>
+                  <li><%= link_to "Edit Profile",edit_user_registration_path %></li>
                   <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
+                  <li class="dropdown-header"></li>
                   <li><a href="#">Account Settings</a></li>
-                  <li><a href="#"><%= link_to "Log Out",  destroy_user_session_path, :method => :delete %></a></li>
+                  <li><%= link_to "Log Out",  destroy_user_session_path, :method => :delete %></li>
                 </ul>
                 </li>
                 <% end %>         
                 </ul>
-                
-              
+            
+                <a href="#"><%= link_to "Add adventure",  new_adventure_path %><i class="fa fa-home fa-lg" aria-hidden="true"></i>  </a>
             
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

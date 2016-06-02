@@ -1,0 +1,19 @@
+
+<div class="col-md-12">
+<h3>Nearby Activites</h3>	
+</div>
+<% for adventure in @adventure.nearbys(10) %>
+<% if adventure.photos %>
+<div class="col-md4">
+	<div class="panel panel-default photo">
+		<div class="panel panel-heading preview">
+			<%= image_tag adventure.photos[0].image.url(:medium) %>
+		</div>
+		<div class="panel-body">
+			<%= link_to adventure.activity_name, adventure %>
+			(<%= adventure.distance.round(2) %> Miles away)
+		</div>
+	</div>
+</div>
+<% end %>
+<% end%>

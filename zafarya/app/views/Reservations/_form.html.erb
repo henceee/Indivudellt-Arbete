@@ -1,0 +1,108 @@
+<div class="panel panel-default right res text-center">
+    <div class="panel-heading">
+        Book This Activity
+    </div>    
+    <div class="panel-body">
+        <%= simple_form_for([@adventure, @adventure.reservations.new]) do |f| %>
+        
+        <div class="row">
+             <div class="form-group">
+                <%= f.text_field :date  %> <!-- input :date,  collection: @dates, label_method: :date -->
+            </div>
+        </div> 
+        <div class="row">
+             <div class="form-group">
+                <%= f.select :start_time, class:"timepicker"%>
+            </div>
+        </div> 
+        <div class="row">
+             <div class="form-group">
+                <%= f.select :end_time, class:"timepicker" %>
+            </div>
+        </div> 
+        <div class="row">
+             <div class="form-group">
+                 <%= f.input :perticipants, collection: 1..@adventure.max_perticipants %>
+            </div>
+        </div> 
+        
+        <%= f.hidden_field :adventure_id, value: @adventure.id %>
+        <%= f.hidden_field :price, value: @adventure.price %>
+        
+        <%= f.submit "Book", class: "btn btn-primary" %>
+        <% end%>
+    </div>
+</div> 
+
+<script type="text/javascript">
+    $(function(){
+        
+        function available(date){
+            dmy = date.getDate()+"-"+ (date.getMonth()+1)+"-"+date.getFullYear();
+            return[$.inArray(dmy, availableDates) != -1];
+        }
+        
+        availableDates=[];
+        
+        $.ajax({
+            url:'/preload',
+            data: {'adventure_id': <%= @adventure.id%>},
+            dataType: 'json',
+            success: function(data){
+                $.each(data,function(arrID, arrValue){
+                   d= new Date(arrValue.date); 
+                   availableDates.push( $.datepicker.formatDate('d-m-yy',d));
+                });
+            }
+        });
+        
+        $('#reservation_date').datepicker({
+            dateFormat: 'dd-mm-yy',
+            minDate:0,
+            maxDate: '3m',
+            beforeShowDay:available
+        });
+        
+        
+       s_time_input = $('#reservation_start_time');
+       e_time_input = $('#reservation_end_time');
+       
+       $(e_time_input)
+         .find('option')
+        .remove()
+        .end();
+        
+         $(s_time_input)
+         .find('option')
+        .remove()
+        .end();
+       
+       
+        $('#reservation_date').change(function(e){
+            
+            $.ajax({
+            url:'/times',
+            data: {'adventure_id': <%= @adventure.id%>, 'date':$(e.target).val()},
+            dataType: 'json',
+            success: function(data){
+                 $.each(data,function(arrID, arrValue){
+                 
+                 s_time =moment.parseZone(arrValue.start_time).utc().format('HH:mm')
+                 e_time =moment.parseZone(arrValue.end_time).utc().format('HH:mm')
+                  
+                  $(s_time_input).append($('<option>', {value: s_time , text: s_time}));
+                  
+                  $(e_time_input).append($('<option>', {value: e_time , text: e_time}));
+
+                });
+            }
+            });
+        
+        
+            
+       
+        });
+        
+        
+    });
+</script>

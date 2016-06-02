@@ -1,0 +1,69 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+	    
+	    <!-- Image -->
+	    <div class="row">
+	        <div class="col-md-12">
+	            <%= image_tag @adventure.photos[0].image.url(), class: "img-responsive show-photo " if @adventure.photos.length > 0 %>
+	        </div>
+	    </div>
+			    
+	    
+		<!-- Main Info -->
+	    <div class="row">
+	        <div class="col-md-12">
+	            <%= render 'maininfo' %>
+	        </div>
+	    </div>
+	    
+    	<div class="right inline top-marg">
+		<!-- Reservation form -->	
+		<%= render 'Reservations/form' %>
+		</div>
+		
+		
+	<!-- About -->
+	<div class="row width-75 inline">
+	    <div class="col-md-12">
+	        <h2>About this Adventure</h2>
+	        <p><%= @adventure.description %></p>
+	    </div>
+	</div>
+	
+	<!-- Reviews -->
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Reviews <span id="average_rating"></span> (<%= @reviews.count %>)</h3>
+				<div class="container">
+					<div>
+						<%= render 'reviews/form' if @booked && !@hasreviews %>
+					</div>
+					<div>
+						<%= render 'reviews/list' %>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+	
+	<!-- Google Map -->
+	<div class="row">
+	    <%= render 'map' %>
+	
+	</div> 
+	
+	 <div class="row">
+	    	<%= render 'nearby' %>
+	 </div>
+	</div>
+	
+</div> 
+
+<script>
+	$('#average_rating').raty({
+		path: '/assets',
+		readOnly: true,
+		score: <%= @adventure.average_rating %>
+	});
+</script>

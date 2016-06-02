@@ -1,0 +1,106 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Your Activity
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            
+            <%= form_for @adventure, html: {multipart: true} do |f| %>
+                <div class="row">
+                    <div class="form-group">
+                        <%= label(:activity_name,"Activity Name")%>
+                        <%= f.text_field :activity_name,placeholder:"Activity Name", class:"form-control" %> 
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <%= label(:description,"Description")%>
+                        <%= f.text_area :description,placeholder:"Tell your custumers about your adventure!", class:"form-control custom_area" %>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <%= label(:leader,"Leader:")%>
+                        <%= f.text_field :leader,placeholder:"Leader", class:"form-control" %>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <%= label(:activity_name,"Company Name")%>
+                        <%= f.text_field :company_name,placeholder:"Company Name", class:"form-control" %>
+                    </div>
+                </div>
+                
+                
+                <div class="row">
+                    <div class="form-group">
+                        <%= label(:adress,"Adress")%>
+                        <%= f.text_field :adress,placeholder:"What is your adress?", class:"form-control" %>
+                    </div>
+                </div>
+                
+                 <div class="row">
+                    <div class="form-group">
+                        <%= label(:price,"Price")%>
+                        <%= f.number_field :price,placeholder:"Price" %>
+                    </div>
+                    <div class="form-group">
+                        <label>Currency</label>
+                        <!-- ADD FUNCTIONALITY for perticipants -->
+                        <%= f.select :currency, [["Euro","Euro"],["USD","USD"]], prompt:"Select..",class:"form-control" %>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md4 select ">
+                        <div class="form-group">
+                            <label>Maximum Perticipants</label>
+                            <!-- ADD FUNCTIONALITY for perticipants -->
+                            <%= f.select :max_perticipants, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]], prompt:"Select..",class:"form-control" %>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md4">
+                        <div class="form-group">
+                            <span class="btn-btn default btn-file">
+                                <i class="fa fa-cloud-upload fa-lg"></i> Upload Photo
+                                <%= file_field_tag "images[]", type: :file, multiple: true %>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <%= render 'photos/list' %>
+              
+                <%= render 'dateslist' %>
+            
+                
+                <% if params[:action] =="edit" %>
+                    <div class="form-group">
+                        <%= f.fields_for :activity_dates, @adventure.activity_dates.new do |a| %>
+                            <label>Date:</label>
+                             <%= a.text_field :date %>
+                             <%= a.hidden_field :adventure_id, value: @adventure.id %>
+                        <% end %>
+                    </div>
+                <% end %>
+                <div class="actions">
+                <%= f.submit "Add Adventure", :class=> "btn btn-primary"%>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<script>
+          $('#adventure_activity_dates_attributes_0_date').datepicker({
+            dateFormat: 'dd-mm-yy',
+            minDate:0
+        });
+    
+</script>

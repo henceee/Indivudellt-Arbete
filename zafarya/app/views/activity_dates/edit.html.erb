@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1><%= @date.date.strftime("%d-%m-%Y")%></h1>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            
+              <%= form_for @date do |f| %>
+             
+                  <div class="form-group text-center">
+                         <%= f.fields_for :time_slots, @date.time_slots.new do |a| %>
+                            <div id="times">
+                            <!-- = render 'activity_dates/times', a: a%> -->
+                            <div class="times panel panel-default">
+                            <!-- <a href="#" onclick="removeChoice($(this))" class="btn btn-default removeButton right" > X </a> -->
+                            <div class="row text-center">
+                            <div class="form-group">
+                            <label>Start Time:</label> 
+                            <%= a.time_field :start_time %>           
+                            </div>
+                            </div>
+                            <div class="row text-center">
+                            <label>End Time: </label> 
+                            <%= a.time_field :end_time %>
+                            </div>
+                            <%= a.hidden_field :activity_date_id, value: @date.id %>
+                            </div>
+
+                            </div>
+                        <% end %>
+                        
+                        <div style="display: none;" id="new_choice_form">
+                        <!-- %= render "activity_dates/times", a:a %> -->
+                        </div>
+                        
+                        <%= f.submit "Add", class: "btn btn-primary top-marg" %>    
+                        <% end %>
+                        
+           
+                   </div> 
+                
+                
+              
+          
+        </div>
+    </div>
+</div>

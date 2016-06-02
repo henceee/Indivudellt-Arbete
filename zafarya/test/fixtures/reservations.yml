@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  adventure_id: 
+  date: 2016-05-17 20:59:32
+  start_time: 2016-05-17 20:59:32
+  end_time: 2016-05-17 20:59:32
+  perticipants: 1
+  total_price: 1
+
+two:
+  user_id: 
+  adventure_id: 
+  date: 2016-05-17 20:59:32
+  start_time: 2016-05-17 20:59:32
+  end_time: 2016-05-17 20:59:32
+  perticipants: 1
+  total_price: 1

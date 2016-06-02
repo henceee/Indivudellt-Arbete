@@ -1,0 +1,35 @@
+
+    <% @adventure.activity_dates.each do |d|%>
+        <% unless d.date.nil?%>
+        <div class="panel-heading photo">
+           
+            <%= d.date.strftime("%d-%m-%Y") %> : <%= link_to "Edit", edit_activity_date_path(d), class: "btn btn-primary" %>
+            
+        </div>  
+        <%end%>     
+        <div class="panel-body ad-container">
+                <% d.time_slots.each do |t| %>
+                     <% unless t.start_time.nil? && t.end_time.nil?%>
+                        <div class="row">
+                            <p><%= t.start_time.strftime("%H:%M")%> - <%= t.end_time.strftime("%H:%M") %></p>
+                            <span class="pull-right">
+                             <%= link_to t, remote: true, method: :delete,  class:"delete-date" do %>
+        					  		<i class="fa fa-times fa-lg"></i>
+        				  	<% end %>
+        				  	</span>
+                        </div> 
+                    <%end%>
+                <%end%>
+        </div>
+        
+    <%end%>
+
+
+
+
+<script>
+    $('.delete-date').on('click', function(event) {
+            $('.ad-container')[0].remove();
+    });  
+
+</script>

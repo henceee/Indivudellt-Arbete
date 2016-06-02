@@ -53,26 +53,12 @@ config.action_mailer.smtp_settings = {
         :address        => 'smtp.mailgun.org',
         :port           => '2525',
         :authentication => :plain,
-        :user_name      => 'postmaster@sandboxc3ad0e953f7e405bb9185aa99d36b016.mailgun.org',
-        :password       => '92f4eb9ce4970ba0d0edec81e0bb52a7',
+        :user_name      => 'postmaster@zafarya.mailgun.com',
+        :password       => 'c5c8e4d5e0b6240c9666bf64d37b626c',
         api_key: 'key-ac9821563ff7f96a1289445e53fedf6c', 
-        domain: 'https://api.mailgun.net/v3/sandboxc3ad0e953f7e405bb9185aa99d36b016.mailgun.org',
+        domain: 'https://api.mailgun.net/v3/zafarya.mailgun.com',
         
 }
 
-=begin
-host = 'my_app.c9.io'
-config.action_mailer.default_url_options = { host: host }
 
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-:address        => 'smtp.mailgun.org',
-:port           => '2525',
-:authentication => :plain,
-:user_name      => 'postmaster@xxxxxxxxxxxxxxxxx.mailgun.org',
-:password       => 'xxxxxxxxxxxxxxxxxxx',
-:domain         => 'sandboxxxxxxxxxxxxxxxxxx.mailgun.org',
-:enable_starttls_auto => true  
-}
-=end
 end

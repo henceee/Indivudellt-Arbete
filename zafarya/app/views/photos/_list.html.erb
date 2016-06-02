@@ -1,0 +1,26 @@
+<% if @photos %>
+	
+		<% @photos.each do |photo| %>		
+			
+				<div class="panel panel-default photo photorow">
+					  <div class="panel-heading preview">
+					  	<%= image_tag photo.image.url() %>
+					  </div>
+					  <span class="pull-right">
+				  		<%= link_to photo, remote: true, method: :delete,  class:"delete-photo" do %>
+					  		<i class="fa fa-times fa-lg"></i>
+				  		<% end %>
+					  </span>
+				</div>
+
+		<% end %>
+
+<% end %>
+
+<script>
+    $('.delete-photo').on('click', function(event) {
+        $('.photorow')[0].remove();
+         
+    });  
+
+</script>

@@ -1,12 +1,23 @@
 class User < ActiveRecord::Base
+  
+  has_many :adventures
+  has_many :reservations
+  has_many :reviews
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable,:omniauthable
+         :omniauthable #:confirmable
+  
+  include Gravtastic
+  gravtastic
+  
+  gravtastic :default	 => :mm
   
   validates :fullname, presence: true, length: {maximum: 50}
   
+
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
     
@@ -24,6 +35,8 @@ class User < ActiveRecord::Base
     end
     
   end
+  
+
   
 end
 

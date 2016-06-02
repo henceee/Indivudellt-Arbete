@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  activity_name: MyString
+  description: MyString
+  leader: MyString
+  company_name: MyString
+  adress: MyString
+  max_perticipants: 1
+  price: 1
+  active: false
+  user_id: 
+
+two:
+  activity_name: MyString
+  description: MyString
+  leader: MyString
+  company_name: MyString
+  adress: MyString
+  max_perticipants: 1
+  price: 1
+  active: false
+  user_id: 
