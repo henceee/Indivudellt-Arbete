@@ -1,2 +1,72 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div id="wrapper">
+<%= form_tag search_path, method: :get do %>
+	<div class="row">
+		<div class="col-md-6">
+			<%= text_field_tag :search, params[:search], placeholder: "Where are you looking for adventure?", class: "form-control" %>
+		</div>
+		<div class="col-md-2">
+			<%= text_field_tag :start_date, params[:start_date], placeholder: "Start Date", class: "form-control" %>
+		</div>
+		<div class="col-md-2">
+			<%= text_field_tag :end_date, params[:end_date], placeholder: "End Date", class: "form-control" %>
+		</div>
+		<div class="col-md-2">
+			<%= submit_tag "Search", class: "btn btn-primary" %>
+		</div>
+	</div>
+<% end %>
+
+
+<div class="text-center">
+	<h2>Go Adventure!</h2>
+	<p> weAdventure has thousands of outdoor adventures, from hiking, mountainbiking, climbing and kitesurfing, to skydiving, bungee jumping and many more!</p>
+</div>
+
+<br>
+
+<%= render 'pages/cards'%>
+
+
+</div>
+<div class="row">
+	<% @adventure.each do |adventure| %>
+		
+		<div class="col-md-3 top-marg">
+			<div class="panel panel-default">
+				<div class="panel-heading preview">
+					<%= image_tag adventure.photos[0].image.url(:medium) if adventure.photos.length > 0 %>
+				</div>
+				<div class="panel-body">
+					<%= link_to adventure.activity_name, adventure, class:"lnk" %>
+				</div>
+			</div>
+		</div>
+
+	<% end %>
+</div>
+</div>
+
+<script>
+	$(function() {
+		$("#start_date").datepicker({
+			dateFormat: 'dd-mm-yy',
+			minDate: 0,
+			maxDate: '3m',
+			onSelect: function(selected) {
+				$('#end_date').datepicker("option", "minDate", selected);
+				$('#end_date').attr('disabled', false);
+			}
+		});
+
+		$("#end_date").datepicker({
+			dateFormat: 'dd-mm-yy',
+			minDate: 0,
+			maxDate: '3m',
+			onSelect: function(selected) {
+				$('#start_date').datepicker("option", "maxDate", selected);
+			}
+		});
+	})
+
+
+</script>

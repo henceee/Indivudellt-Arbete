@@ -1,6 +1,18 @@
 <!-- Static navbar -->
+     
+     <a href="<%=root_path%>" class="headlnk">
+         <div class="head">
+             <div class="va-container">
+      				<div class="va-middle text-center headtext">
+      					<h1><strong>weAdventure</strong></h1>
+      				</div>
+      			</div>
+         </div>
+     </a>
+       
       <nav class="navbar navbar-default">
         <div class="container-fluid">
+          
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -8,9 +20,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Zafarya</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
+            
+           <%= render 'shared/nav_search'%>
+            
             <ul class="nav navbar-nav navbar-right">
                 
                 <% if(!user_signed_in?)%>
@@ -28,20 +42,23 @@
                   <li><%= link_to "Your Reservations", your_reservations_path %></li>
                   <li><%= link_to "Your Adventures", your_adventures_path %></li>
                   
-                  <li><a href="#">Wishlist</a></li>
+                  
                   <li><%= link_to "Edit Profile",edit_user_registration_path %></li>
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header"></li>
-                  <li><a href="#">Account Settings</a></li>
                   <li><%= link_to "Log Out",  destroy_user_session_path, :method => :delete %></li>
                 </ul>
                 </li>
                 <% end %>         
                 </ul>
             
-                <a href="#"><%= link_to "Add adventure",  new_adventure_path %><i class="fa fa-home fa-lg" aria-hidden="true"></i>  </a>
+               <%= link_to new_adventure_path  do %>
+               <span class="text-muted right text-center add">
+                 <h4><i class="fa fa-plus fa-lg" aria-hidden="true"></i> Add adventure </h4>
+               </span>   
+               <%end%>
             
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
+          </div>
+        </div>
       </nav>
       

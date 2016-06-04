@@ -1,0 +1,101 @@
+<div id="wrapper">
+	
+	<div id="sidebar">
+        <div id="widget">
+            <%= render 'map', locals:{arrAdventures: @arrAdventurest}%> 
+        </div>
+	</div>
+
+	<div id="article">
+		
+		<div class="row">
+			<%= search_form_for @search, url: search_path do |f| %>
+				
+				<div class="row">
+					<div class="col-md-3">
+						<%= text_field_tag :start_date, params[:start_date], placeholder: "Start Date", class: "form-control" %>
+					</div>
+					<div class="col-md-3">
+						<%= text_field_tag :end_date, params[:end_date], placeholder: "End Date", class: "form-control" %>
+					</div>
+					<div class="col-md-3">
+						<%= f.text_field :price_gteq, placeholder: "Min Price", class: "form-control" %>
+					</div>
+					<div class="col-md-3">
+						<%= f.text_field :price_lteq, placeholder: "Max Price", class: "form-control" %>
+					</div>
+				</div>
+
+               			
+				<hr>
+
+				<div class="row">
+                    <div class="col-md-4">
+                    	<div class="form-group">
+                    		<label>Maximum Perticpants</label>
+                    		<%= f.select :max_perticipants_gteq, [["1",1], ["2",2], ["3",3], ["4",4], ["5",5], ["6+",6]], prompt: "Select...", class: "form-control" %>
+                    	</div>
+                    </div>
+                </div>
+				
+                <hr>
+				<div class="row">
+				    <div class="col-md-4">
+					<%= f.submit "Search", class: "btn btn-primary" %>
+				    </div>	
+				</div>
+
+			<% end %>
+			
+		
+	</div>
+    
+    <hr>
+    <div class="row top-marg">
+       <div class="row">
+       
+            <% @arrAdventures.each do |adventure| %>
+            
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                    	<div class="panel-heading preview">
+                    		<%= image_tag adventure.photos[0].image.url(:medium) if adventure.photos.length > 0 %>
+                    	</div>
+                    	<div class="panel-body">
+                    		<%= link_to adventure.activity_name, adventure,  class:"lnk" %>
+                    	</div>
+                    </div>
+                </div>
+                
+            <% end %>
+       </div>
+    </div>
+
+</div>
+
+
+
+<script>
+	$(function() {
+		$("#start_date").datepicker({
+			dateFormat: 'dd-mm-yy',
+			minDate: 0,
+			maxDate: '3m',
+			onSelect: function(selected) {
+				$('#end_date').datepicker("option", "minDate", selected);
+				$('#end_date').attr('disabled', false);
+			}
+		});
+
+		$("#end_date").datepicker({
+			dateFormat: 'dd-mm-yy',
+			minDate: 0,
+			maxDate: '3m',
+			onSelect: function(selected) {
+				$('#start_date').datepicker("option", "maxDate", selected);
+			}
+		});
+	})
+	
+
+</script>

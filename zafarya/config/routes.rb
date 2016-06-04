@@ -21,13 +21,14 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :destroy]
   end
   
-  get '/preload' => 'reservations#preload'
-  get '/stimes' => 'reservations#stimes'
-  get '/etimes' => 'reservations#etimes'
+  get '/preload'  => 'reservations#preload'
+  get '/stimes'   => 'reservations#stimes'
+  get '/etimes'   => 'reservations#etimes'
   
-  get '/your_adventures' => 'reservations#your_adventures'
-  get '/your_reservations' => 'reservations#your_reservations'
-  post '/notify' => 'reservations#notify'
-  post '/your_adventures' => 'reservations#your_adventures'
+  get '/your_adventures'    => 'reservations#your_adventures'
+  get '/your_reservations'  => 'reservations#your_reservations'
+  post '/notify'            => 'reservations#notify'
+  post '/your_adventures'   => 'reservations#your_adventures'
+  get '/search'             => 'pages#search'
   
  end

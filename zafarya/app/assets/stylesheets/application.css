@@ -21,6 +21,14 @@ body {
   font-size: 2em;
   font-weight: 400;
 }
+
+.navbar-header
+{
+  opacity: 0.3;
+  margin-top: -100px;
+}
+
+
 /*
 .btn-primary.btn {
   border: 1px solid #ff5a5f;
@@ -248,3 +256,96 @@ input[type="checkbox"]:checked:before {
 
 }
 
+#wrapper
+{
+  top: 0;
+  width: 95%;
+  margin: 0 auto;
+}
+
+#sidebar, #sticky
+{
+  float: right;
+  width: 30%;
+  max-width: 250px;
+  max-height: 610px;
+}
+
+#sidebar #widget
+{
+  height: 600px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  margin-right:2%;
+}
+
+#article 
+{
+  width: 70%;
+  float:left;
+}
+
+#article input,label
+{
+  margin-top: 10px;
+}
+
+.navlogo
+{
+  width: 30%;
+  margin-bottom: 0px;
+}
+
+.add
+{
+  padding: 2px;
+  margin-top: 5px;
+  
+}
+
+.search-bar
+{
+  margin-top: 5px;
+}
+
+.lnk
+{
+  color:#602020;
+}
+
+.head  
+{
+  width: 100%;
+  height: 400px;
+  background-image: url("../assets/newhead.jpeg");
+  background-size: 100% 120%;
+}
+
+
+.discovery-card {
+  background-size: cover;
+  background-position: center;
+  height: 326px;
+}
+
+.va-container {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.va-middle {
+  color: #fff;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.headtext h1
+{
+  font-size: 100px;
+}
+
+.headlnk, .headlnk:hover
+{
+  text-decoration: none;
+}

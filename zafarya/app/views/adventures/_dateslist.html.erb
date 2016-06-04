@@ -1,7 +1,7 @@
 
     <% @adventure.activity_dates.each do |d|%>
         <% unless d.date.nil?%>
-        <div class="panel-heading photo">
+        <div class="panel-heading ">
            
             <%= d.date.strftime("%d-%m-%Y") %> : <%= link_to "Edit", edit_activity_date_path(d), class: "btn btn-primary" %>
             

@@ -74,10 +74,14 @@
                         </div>
                     </div>
                 </div>
-                
-                <%= render 'photos/list' %>
-              
-                <%= render 'dateslist' %>
+                <div class="row">
+                     <%= render 'photos/list' %>
+                </div>
+               
+                <div class="row">
+                     <%= render 'dateslist' %>
+                </div>
+               
             
                 
                 <% if params[:action] =="edit" %>

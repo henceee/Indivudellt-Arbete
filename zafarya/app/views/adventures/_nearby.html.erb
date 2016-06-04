@@ -10,7 +10,7 @@
 			<%= image_tag adventure.photos[0].image.url(:medium) %>
 		</div>
 		<div class="panel-body">
-			<%= link_to adventure.activity_name, adventure %>
+			<%= link_to adventure.activity_name, adventure, class:"lnk" %>
 			(<%= adventure.distance.round(2) %> Miles away)
 		</div>
 	</div>

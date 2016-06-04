@@ -7,17 +7,17 @@
         
         <div class="row">
              <div class="form-group">
-                <%= f.text_field :date  %> <!-- input :date,  collection: @dates, label_method: :date -->
+                <%= f.text_field :date, class:"res-input form-control" %> 
             </div>
         </div> 
         <div class="row">
              <div class="form-group">
-                <%= f.select :start_time, class:"timepicker"%>
+                <%= f.select :start_time, class:"timepicker res-input form-control"%>
             </div>
         </div> 
         <div class="row">
              <div class="form-group">
-                <%= f.select :end_time, class:"timepicker" %>
+                <%= f.select :end_time, class:"timepicker res-input form-control" %>
             </div>
         </div> 
         <div class="row">
