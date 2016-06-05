@@ -1,7 +1,7 @@
-@import "bootstrap-sprockets";
+
 @import "bootstrap";
 //= require moment
-*= require jquery.timepicker.css
+//= require jquery.timepicker.css
 
 body {  
   color: #565a5c;
