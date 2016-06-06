@@ -264,5 +264,5 @@ hellozafarya@gmail.com'
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   
-  config.omniauth :facebook, '632371343567979', 'af0b313c58baff8eca91f12255e148b1', scope: 'email', info_fields: 'email,name'
+  config.omniauth :facebook, '1713827135556761', '001bf34f12f89f259a6c833ce4f40275', scope: 'email', info_fields: 'email,name'
 end
