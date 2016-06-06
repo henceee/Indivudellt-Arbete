@@ -44,5 +44,3 @@ class ActivityDatesController < ApplicationController
         @date = ActivityDate.find(params[:id])
     end
 end
-
-###
