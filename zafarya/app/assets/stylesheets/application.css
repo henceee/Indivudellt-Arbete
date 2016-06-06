@@ -317,7 +317,7 @@ input[type="checkbox"]:checked:before {
 {
   width: 100%;
   height: 400px;
-  background-image: url("../assets/images/newhead.jpeg");
+  background-image: url("../assets/newhead.jpeg");
   background-size: 100% 120%;
 }
 
